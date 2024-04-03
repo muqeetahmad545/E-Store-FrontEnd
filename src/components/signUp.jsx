@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import config from "../axios/config";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignUp = () => {
@@ -150,8 +150,8 @@ const SignUp = () => {
                     <div className="col-12">
                       <div className="d-grid">
                         <button
-                          className="btn btn-lg btn-primary " style={{  backgroundColor: "#4CAF50",
-                          color: "white",}}
+                          className="btn btn-lg btn-primary "
+                          style={{ backgroundColor: "#4CAF50", color: "white" }}
                           type="submit"
                         >
                           sign up now
@@ -160,6 +160,24 @@ const SignUp = () => {
                     </div>
                   </div>
                 </form>
+                <div className="row">
+                  <div className="col-12">
+                    <hr className="mt-5 mb-4 border-secondary-subtle" />
+                    <div className="d-flex  gap-md-3 flex-column flex-md-row justify-content-md-end align-items-center">
+                      <h6 className="mb-0">Already have an account?</h6>
+                      <Link
+                        to="/login"
+                        className="link-secondary text-decoration-none"
+                        style={{
+                          color: "blue",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        Login
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

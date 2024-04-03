@@ -25,11 +25,15 @@ const AddProductForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     try {
+      const token = localStorage.getItem("access_token");
       const response = await axios.post(`${config.BASE_URL}/collection`, formData, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+
         },
       });
       handleClear();
