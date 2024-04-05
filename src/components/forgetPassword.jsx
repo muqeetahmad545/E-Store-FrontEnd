@@ -16,6 +16,7 @@ const ForgetPassword = () => {
     setData((prevState) => ({
       ...prevState,
       [name]: value,
+      
     }));
   };
 
