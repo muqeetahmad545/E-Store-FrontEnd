@@ -24,7 +24,7 @@ const ForgetPassword = () => {
     try {
       const token = localStorage.getItem("access_token");
       const response = await axios.put(
-        `${config.BASE_URL}/user/forgrtPass`,
+        `${config.BASE_URL}/user/forgetPass`,
         data,
         {
           headers: {
