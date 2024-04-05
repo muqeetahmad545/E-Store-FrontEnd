@@ -37,6 +37,7 @@ const SignUp = () => {
       const { user } = response.data;
       localStorage.setItem("user_Id", user.user._id);
       localStorage.setItem("access_token", user.access_token);
+      localStorage.setItem("userRole", user.userRole);
       navigate("/login");
       handleClear();
     } catch (error) {

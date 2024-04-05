@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import config from "../axios/config";
-const AddProductForm = () => {
+const EditProductForm = () => {
   const [formData, setFormData] = useState({
     productName: "",
     quantity: "",
@@ -85,7 +85,7 @@ const AddProductForm = () => {
           borderRadius: "5px",
         }}
       >
-        <h2 style={{ textAlign: "center" }}>Add Product</h2>
+        <h2 style={{ textAlign: "center" }}>Edit Product</h2>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", marginBottom: "10px" }}>
             <label style={{ flex: "1", marginRight: "10px" }}>
@@ -213,7 +213,7 @@ const AddProductForm = () => {
               cursor: "pointer",
             }}
           >
-            Add Product
+            Update Product
           </button>
           <button
             type="submit"
@@ -236,4 +236,4 @@ const AddProductForm = () => {
   );
 };
 
-export default AddProductForm;
+export default EditProductForm;

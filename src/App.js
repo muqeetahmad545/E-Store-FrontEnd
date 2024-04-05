@@ -6,10 +6,10 @@ import Footer from './components/footer';
 function App() {
   return (
     <>
-      <div className='app' style={{ backgroundColor: "#b78876", height :"100vh"}} >
+      <div className='app' style={{ backgroundColor: "#b78876", height: "100vh" }} >
         <Navbar />
         <Router />
-        <Footer/>
+        <Footer />
       </div>
     </>
   );
