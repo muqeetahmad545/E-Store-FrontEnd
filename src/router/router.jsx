@@ -19,7 +19,9 @@ const Router = () => {
       <Route path="/" element={<Home />} />
       <Route path="/menCollection" element={<MenCollection />} />
       <Route path="/womenCollection" element={<WomenCollection />} />
-      <Route path="/babyCollection" element={<BabyCollection />} />
+{/* props passs */}
+      <Route path="/babyCollection" element={<BabyCollection name = "Enter Some text" />}  />
+      {/* <Route path="/babyCollection" element={<BabyCollection />} /> */}
       <Route path="/error" element={<NotFound />} />
     </Routes>
   );

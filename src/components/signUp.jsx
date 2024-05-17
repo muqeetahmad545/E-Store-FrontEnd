@@ -150,7 +150,7 @@ const SignUp = () => {
                     <div className="col-12">
                       <div className="d-grid">
                         <button
-                          className="btn btn-lg btn-primary "
+                          className="btn btn-lg btn-primary  "
                           style={{ backgroundColor: "#4CAF50", color: "white" }}
                           type="submit"
                         >

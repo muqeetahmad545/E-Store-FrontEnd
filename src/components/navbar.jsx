@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <>
       <nav
@@ -10,7 +10,7 @@ const Navbar = () => {
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            E-Store
+            E-Store 
           </Link>
           <button
             className="navbar-toggler"
@@ -69,8 +69,13 @@ const Navbar = () => {
                 aria-label="Search"
               />
               <button className="btn btn-outline-success" type="submit">
-                Search
+                Search 
               </button>
+            <div>
+            {props.name}-{props.lastName}
+            {props.children}
+
+            </div>
             </form>
           </div>
         </div>
@@ -78,5 +83,7 @@ const Navbar = () => {
     </>
   );
 };
+
+
 
 export default Navbar;

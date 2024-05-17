@@ -7,7 +7,11 @@ function App() {
   return (
     <>
       <div className='app' style={{ backgroundColor: "#b78876", height :"100vh"}} >
-        <Navbar />
+        <Navbar name ="Muqeet" lastName= "Ahmad" > 
+        <p>Muqeet This is A Goal To accive One in Life </p>
+        </Navbar>
+        {/* <Navbar name = "Muqeet" lastName = "Ahmad"
+        <Navbar/> */}
         <Router />
         <Footer/>
       </div>
