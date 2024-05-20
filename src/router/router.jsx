@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import AppProvider from "../context/ContextProvider";
 import Home from "../components/home";
 import Login from "../components/login";
 import SignUp from "../components/signUp";
@@ -11,7 +12,8 @@ import BabyCollection from "../components/babyCollection";
 import NotFound from "../components/notFound";
 const Router = () => {
   return (
-    <Routes>
+<AppProvider>
+<Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signUp" element={<SignUp />} />
       <Route path="/addProduct" element={<AddProduct />} />
@@ -19,9 +21,14 @@ const Router = () => {
       <Route path="/" element={<Home />} />
       <Route path="/menCollection" element={<MenCollection />} />
       <Route path="/womenCollection" element={<WomenCollection />} />
+<<<<<<< Updated upstream
+=======
+{/* props passs */}
+>>>>>>> Stashed changes
       <Route path="/babyCollection" element={<BabyCollection />} />
       <Route path="/error" element={<NotFound />} />
     </Routes>
+</AppProvider>
   );
 };
 
