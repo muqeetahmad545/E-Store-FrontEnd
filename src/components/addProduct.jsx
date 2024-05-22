@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import config from "../axios/config";
+import config from "../axios/Config";
 
 const AddProductForm = () => {
   const [formData, setFormData] = useState({
@@ -25,19 +25,21 @@ const AddProductForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
     try {
-      const token = localStorage.getItem("access_token");
-      const response = await axios.post(`${config.BASE_URL}/collection`, formData, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-
-        },
-      });
+      const token = sessionStorage.getItem("access_token");
+      const response = await axios.post(
+        `${config.BASE_URL}/collection`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       handleClear();
-      console.log("Successful login", response.data); 
+      console.log("Successful login", response.data);
     } catch (error) {
       console.log("error", error);
     }
@@ -68,7 +70,7 @@ const AddProductForm = () => {
       }}
     >
       <form
-  onSubmit={handleSubmit} 
+        onSubmit={handleSubmit}
         style={{
           width: "500px",
           padding: "20px",

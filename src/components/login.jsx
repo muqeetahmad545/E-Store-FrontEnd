@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import config from "../axios/config";
+import config from "../axios/Config";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,16 +21,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const token = localStorage.getItem("access_token");
       const response = await axios.post(`${config.BASE_URL}/user/login`, data, {
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${token}`,
         },
       });
       console.log("Successful login", response.data);
-      localStorage.setItem("user_Id", response.data.content._id);
-      localStorage.setItem("access_token",response.data.access_token);
+      sessionStorage.setItem("user_Id", response.data.content._id);
+      sessionStorage.setItem("access_token", response.data.access_token);
+      sessionStorage.setItem("first_Name", response.data.content.firstName);
       navigate("/");
       handleClear();
     } catch (error) {

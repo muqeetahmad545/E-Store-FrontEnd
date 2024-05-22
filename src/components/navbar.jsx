@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <>
       <nav
@@ -71,6 +71,13 @@ const Navbar = () => {
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
+
+              <div
+                className=""
+                style={{ marginTop: "8px", marginLeft: "10px" }}
+              >
+                {props.userName}
+              </div>
             </form>
           </div>
         </div>

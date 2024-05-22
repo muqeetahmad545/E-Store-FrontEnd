@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import config from "../axios/config";
+import config from "../axios/Config";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -35,8 +35,9 @@ const SignUp = () => {
       );
       console.log("Success:", response.data);
       const { user } = response.data;
-      localStorage.setItem("user_Id", user.user._id);
-      localStorage.setItem("access_token", user.access_token);
+      sessionStorage.setItem("user_Id", response.data.content._id);
+      sessionStorage.setItem("access_token", response.data.access_token);
+      sessionStorage.setItem("first_Name", response.data.content.firstName);
       navigate("/login");
       handleClear();
     } catch (error) {

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import config from "../axios/config";
+import config from "../axios/Config";
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const ForgetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("access_token");
+      const token = sessionStorage.getItem("access_token");
       const response = await axios.put(
         `${config.BASE_URL}/user/forgetPass`,
         data,
@@ -127,7 +127,7 @@ const ForgetPassword = () => {
                         color: "blue",
                       }}
                     >
-                     Login account
+                      Login account
                     </Link>
                   </div>
                 </div>

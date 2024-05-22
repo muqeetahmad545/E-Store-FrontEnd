@@ -1,33 +1,33 @@
 import React, { useState, useCallback } from 'react';
 import axios from 'axios';
 import AppContext from '../context/Context';
-import config from '../axios/config';
+import config from '../axios/Config';
 
 const AppProvider = ({ children }) => {
   const [data, setData] = useState(10);
 
-  const token = localStorage.getItem('access_token');
+  const token = sessionStorage.getItem('access_token');
   console.log("token")
   const getData = useCallback(async () => {
     try {
-          const response = await axios.get(`${config.BASE_URL}/collection`, {
+      const response = await axios.get(`${config.BASE_URL}/collection`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
       });
-      setData(response.data.findRecord); 
+      setData(response.data.findRecord);
       return response.data.findRecord;
     } catch (error) {
       console.log("error", error);
     }
-  },[]); 
+  }, []);
 
   return (
-    <AppContext.Provider value={{ 
+    <AppContext.Provider value={{
       getData,
       data
-      }}>
+    }}>
       {children}
     </AppContext.Provider>
   );
