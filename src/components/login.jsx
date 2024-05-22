@@ -21,14 +21,16 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("access_token");
+      // const token = localStorage.getItem("access_token");
       const response = await axios.post(`${config.BASE_URL}/user/login`, data, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
         },
       });
       console.log("Successful login", response.data);
+      localStorage.setItem("user_Id", response.data.content._id);
+      localStorage.setItem("access_token",response.data.access_token);
       navigate("/");
       handleClear();
     } catch (error) {
