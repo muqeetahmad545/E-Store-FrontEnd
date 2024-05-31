@@ -10,6 +10,7 @@ import MenCollection from "../components/MenCollection";
 import WomenCollection from "../components/WomenCollection";
 import BabyCollection from "../components/BabyCollection";
 import NotFound from "../components/NotFound";
+import AdminPage from "../components/Admin";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/forgetPass" element={<ForgetPassword />} />
         <Route path="/" element={<Home />} />
