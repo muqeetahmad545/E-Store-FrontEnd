@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import config from "../axios/Config";
-
 const AddProductForm = () => {
   const [formData, setFormData] = useState({
     productName: "",
@@ -31,7 +30,6 @@ const AddProductForm = () => {
       });
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -52,7 +50,6 @@ const AddProductForm = () => {
       console.log("error", error);
     }
   };
-
   const handleClear = () => {
     setFormData({
       productName: "",
