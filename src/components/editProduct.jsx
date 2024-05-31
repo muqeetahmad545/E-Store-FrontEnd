@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import config from "../axios/Config";
-
-const AddProductForm = () => {
+const EditProductForm = () => {
   const [formData, setFormData] = useState({
     productName: "",
     quantity: "",
@@ -35,7 +34,7 @@ const AddProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = sessionStorage.getItem("access_token");
+      const token = localStorage.getItem("access_token");
       const response = await axios.post(
         `${config.BASE_URL}/collection`,
         formData,
@@ -86,7 +85,7 @@ const AddProductForm = () => {
           borderRadius: "5px",
         }}
       >
-        <h2 style={{ textAlign: "center" }}>Add Product</h2>
+        <h2 style={{ textAlign: "center" }}>Edit Product</h2>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", marginBottom: "10px" }}>
             <label style={{ flex: "1", marginRight: "10px" }}>
@@ -214,7 +213,7 @@ const AddProductForm = () => {
               cursor: "pointer",
             }}
           >
-            Add Product
+            Update Product
           </button>
           <button
             type="submit"
@@ -237,4 +236,4 @@ const AddProductForm = () => {
   );
 };
 
-export default AddProductForm;
+export default EditProductForm;
