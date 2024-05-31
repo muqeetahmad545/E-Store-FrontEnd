@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import config from "../axios/Config";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { IoMdEyeOff, IoMdEye } from "react-icons/io";
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const [data, setData] = useState({
@@ -19,6 +22,10 @@ const SignUp = () => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
   };
 
   const handleSubmit = async (e) => {
@@ -53,6 +60,7 @@ const SignUp = () => {
       password: "",
     });
   };
+
   return (
     <>
       <div className="bg-light py-3 py-md-5">
@@ -62,7 +70,7 @@ const SignUp = () => {
               <div className="bg-white p-4 p-md-5 rounded shadow-sm">
                 <div className="row">
                   <div className="col-12">
-                    <div className="mb-5" style={{ textAlign: "center" }}>
+                    <div className="mb-5 text-center">
                       <h3>Sign Up </h3>
                       <h6>Create your account </h6>
                     </div>
@@ -71,8 +79,8 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="row gy-3 gy-md-4 overflow-hidden">
                     <div className="col-12">
-                      <label htmlFor="email" className="form-label">
-                        Fist Name <span className="text-danger">*</span>
+                      <label htmlFor="firstName" className="form-label">
+                        First Name <span className="text-danger">*</span>
                       </label>
                       <input
                         type="text"
@@ -86,15 +94,15 @@ const SignUp = () => {
                       />
                     </div>
                     <div className="col-12">
-                      <label htmlFor="email" className="form-label">
-                        last Name <span className="text-danger">*</span>
+                      <label htmlFor="lastName" className="form-label">
+                        Last Name <span className="text-danger">*</span>
                       </label>
                       <input
                         type="text"
                         className="form-control"
                         name="lastName"
                         id="lastName"
-                        placeholder="last Name"
+                        placeholder="Last Name"
                         required
                         value={data.lastName}
                         onChange={handleChange}
@@ -119,24 +127,31 @@ const SignUp = () => {
                       <label htmlFor="password" className="form-label">
                         Password <span className="text-danger">*</span>
                       </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        id="password"
-                        placeholder="password"
-                        defaultValue
-                        required
-                        value={data.password}
-                        onChange={handleChange}
-                      />
+                      <div className="position-relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className="form-control"
+                          name="password"
+                          id="password"
+                          placeholder="password"
+                          required
+                          value={data.password}
+                          onChange={handleChange}
+                        />
+                        <span
+                          className="position-absolute end-0 top-0 mt-2 me-2"
+                          onClick={togglePasswordVisibility}
+                          style={{ cursor: "pointer" }}
+                        >
+                          {showPassword ? <IoMdEyeOff /> : <IoMdEye />}
+                        </span>
+                      </div>
                     </div>
                     <div className="col-12">
                       <div className="form-check">
                         <input
                           className="form-check-input"
                           type="checkbox"
-                          defaultValue
                           name="remember_me"
                           id="remember_me"
                         />
@@ -151,11 +166,11 @@ const SignUp = () => {
                     <div className="col-12">
                       <div className="d-grid">
                         <button
-                          className="btn btn-lg btn-primary "
-                          style={{ backgroundColor: "#4CAF50", color: "white" }}
+                          className="btn btn-lg btn-primary"
                           type="submit"
+                          style={{ backgroundColor: "#4CAF50", color: "white" }}
                         >
-                          sign up now
+                          Sign up now
                         </button>
                       </div>
                     </div>
@@ -164,15 +179,12 @@ const SignUp = () => {
                 <div className="row">
                   <div className="col-12">
                     <hr className="mt-5 mb-4 border-secondary-subtle" />
-                    <div className="d-flex  gap-md-3 flex-column flex-md-row justify-content-md-end align-items-center">
+                    <div className="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
                       <h6 className="mb-0">Already have an account?</h6>
                       <Link
                         to="/login"
                         className="link-secondary text-decoration-none"
-                        style={{
-                          color: "blue",
-                          textDecoration: "underline",
-                        }}
+                        style={{ color: "blue", textDecoration: "underline" }}
                       >
                         Login
                       </Link>

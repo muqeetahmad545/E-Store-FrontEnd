@@ -1,16 +1,20 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { IoMdEyeOff, IoMdEye } from "react-icons/io";
 import config from "../axios/Config";
 
 const ForgetPassword = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
     newPassword: "",
   });
-
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
   const handleChange = (e) => {
     const { value, name } = e.target;
     setData((prevState) => ({
@@ -84,16 +88,25 @@ const ForgetPassword = () => {
                     <label htmlFor="newPassword" className="form-label">
                       New Password <span className="text-danger">*</span>
                     </label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      name="newPassword"
-                      id="newPassword"
-                      placeholder="New Password"
-                      required
-                      value={data.newPassword}
-                      onChange={handleChange}
-                    />
+                    <div className="position-relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        className="form-control"
+                        name="newPassword"
+                        id="newPassword"
+                        placeholder="New Password"
+                        required
+                        value={data.newPassword}
+                        onChange={handleChange}
+                      />
+                      <span
+                        className="position-absolute end-0 top-0 mt-2 me-2"
+                        onClick={togglePasswordVisibility}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {showPassword ? <IoMdEyeOff /> : <IoMdEye />}
+                      </span>
+                    </div>
                   </div>
                   <div className="col-12">
                     <div className="d-grid">
